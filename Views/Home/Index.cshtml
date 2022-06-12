@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PetShop.Data.Pet>
+
+@{
+    ViewData["Title"] = "Trang Chủ";
+}
+
+<div class="shadow-lg">
+    <img src="https://blog.logoart.vn/wp-content/uploads/2013/08/thiet-ke-logo-thu-cung-13.gif" width="100" />
+</div>
+
+<div class="headline">
+    <h3>Chó bán phổ biến</h3>
+    <div class="btn1 bg-warning"></div>
+</div>
+
+<div class="owl-carousel owl-theme">
+    @foreach (var item in Model.Where(b => b.GiongLoai == "Chó"))
+    {
+        <div class="col-11" data-aos="fade-up">
+            <div class="card my-2 store-card">
+                <a class="a-cleanup" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.ProfilePicture" class="card-img-top card-img-custom">
+                </a>
+                <div class="card-body">
+                    
+                    <partial name="CartTemplate" model="item" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+    <div class="text-right mt-2">
+        <a class="btn btn-primary" asp-action="ThuCung" asp-controller="Home">Xem thêm<i class="fas fa-angle-right ml-2"></i></a>
+    </div>
+    <div class="headline">
+        <h3>Mèo bán phổ biến</h3>
+        <div class="btn1 bg-warning"></div>
+    </div>
+
+    <div class="owl-carousel owl-theme">
+        @foreach (var item in Model.Where(b => b.GiongLoai == "Mèo"))
+        {
+        <div class="col-11" data-aos="fade-up">
+            <div class="card my-2 store-card">
+                <a class="a-cleanup" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.ProfilePicture" class="card-img-top card-img-custom">
+                </a>
+                <div class="card-body">
+                    <partial name="CartTemplate" model="item" />
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="text-right mt-2">
+        <a class="btn btn-primary" asp-action="ThuCung" asp-controller="Home">Xem thêm<i class="fas fa-angle-right ml-2"></i></a>
+    </div>
+    <div class="zalo-chat-widget" data-oaid="789453545646542" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="15" data-width="" data-height=""></div>
